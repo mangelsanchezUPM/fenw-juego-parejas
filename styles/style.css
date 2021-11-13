@@ -1,0 +1,7 @@
+:root {
+    --primary: rgb(255, 145, 0);
+}
+
+.bg-miw {
+    background-color: var(--primary);
+}
