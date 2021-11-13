@@ -1,7 +1,61 @@
 :root {
     --primary: rgb(255, 145, 0);
+    --primary-faded: rgb(255, 210, 142);
+    --secondary: rgb(0, 115, 209);
+    --text: rgb(255, 255, 255);
 }
 
 .bg-miw {
     background-color: var(--primary);
+}
+
+div.box.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-style: outset;
+    border-color: var(--secondary);
+    border-width: 2px;
+    border-radius: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+div.box .title {
+    border-bottom: outset;
+    background-color: var(--primary);
+    border-color: var(--secondary);
+    border-width: 1px;
+    border-radius: 1px;
+    color: var(--text);
+    color: var(--text);
+}
+
+div.box .body {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    color: var(--black);
+}
+
+div.box.preferences.container {
+    width: 30%;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+div.box.preferences .body {
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+}
+
+form.form-preferences {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.preferences .btn.btn-miw {
+    margin-top: 20px;
+    width: 100%;
+    background-color: var(--secondary);
+    color: var(--text);
+    font-weight: bold;
 }
