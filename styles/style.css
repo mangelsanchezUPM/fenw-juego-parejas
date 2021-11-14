@@ -56,6 +56,8 @@ div.box .body {
     color: var(--black);
 }
 
+/* Preferences specific styles */
+
 div.box.preferences.container {
     width: 30%;
     margin-top: 100px;
@@ -77,12 +79,24 @@ form.form-preferences {
     width: 100%;
 }
 
-#table-top {
+/* Play specific styles */
+
+#play-content{
     margin-top: 30px;
     margin-bottom: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.container.game-info {
+    color: var(--text);
+    font-weight: bold;
+    margin-top: 20px;
+}
+label.game-info-label {
+    font-size: 2vh;
+}
+
 
 #table-top img.img-fluid {
     padding-top: 5px;
