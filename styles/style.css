@@ -41,10 +41,10 @@ div.box.preferences.container {
     margin-top: 100px;
     margin-bottom: 50px;
 }
+
 div.box.preferences .body {
     margin-top: 30px;
     margin-bottom: 10px;
-
 }
 
 form.form-preferences {
@@ -58,4 +58,22 @@ form.form-preferences {
     background-color: var(--secondary);
     color: var(--text);
     font-weight: bold;
+}
+
+#table-top {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#table-top img.img-fluid {
+    padding-top: 5px;
+    max-width: 120px;
+    transition: transform .2s;
+}
+
+#table-top img.img-fluid:hover {
+    transform: scale(1.2);
+    cursor: pointer;
 }
