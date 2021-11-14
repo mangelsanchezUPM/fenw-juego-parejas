@@ -71,6 +71,11 @@ form.form-preferences {
     padding-top: 5px;
     max-width: 120px;
     transition: transform .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 #table-top img.img-fluid:hover {

@@ -51,18 +51,15 @@ class Card {
   }
 }
 
-var cardsNumber,
-  timeLimit,
-  cardsGenerated,
-  selectedCardId,
-  selectedCardValue,
-  gameOver;
+var cardsNumber, timeLimit, cardsGenerated, selectedCard, gameOver, score;
 
 function startGame() {
   $("#table-top").html("");
   cardsNumber = localStorage.getItem("cards-number");
   timeLimit = localStorage.getItem("time-limit");
   gameOver = false;
+  selectedCardIndex = undefined;
+  score = 0;
   cardsGenerated = generateCards();
   printTableTop();
 }
@@ -79,7 +76,8 @@ function generateCards() {
 function printTableTop() {
   for (let i = 0; i < cardsGenerated.length; i++) {
     $("#table-top").append(`
-                 <img name="card" id="card-${i}" src="../assets/naipes/reverso.jpg" class="img-fluid" onclick="selectCard(this.id)">
+                 <img name="card" id="card-${i}" src="../assets/naipes/reverso.jpg" class="img-fluid" draggable="false"
+                 onclick="selectCard(this.id)" >
              `);
   }
 }

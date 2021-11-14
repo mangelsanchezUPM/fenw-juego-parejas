@@ -67,14 +67,36 @@
     <script type="text/javascript" src="scripts/preferences.js"></script>
     <script type="text/javascript" src="scripts/play.js"></script>
     <script>
+        const IMG_REVERSO = 'assets/naipes/reverso.jpg';
 
         function selectCard(cardId) {
             const index = parseInt(cardId.split('-')[1]);
             const card = cardsGenerated[index];
-            if (!card.shown) {
-                selectedCard = cardId;
-                cardsGenerated[index].shown = true;
+            if (card.shown) {
+                console.info('Carta ya seleccionada');
+                return;
+            }
+
+            if (selectedCardIndex === undefined) {
+                selectedCardIndex = index;
+                card.shown = true;
                 $('#' + cardId).attr('src', card.image);
+            } else {
+                const selectedCard = cardsGenerated[selectedCardIndex];
+                const cardsAreEqual = card.value == selectedCard.value;
+                score += cardsAreEqual ? 15 : -5;
+                console.log(score);
+                let previousCardIndex = selectedCardIndex;
+                selectedCardIndex = undefined;
+                $('#' + cardId).attr('src', card.image);
+                if (!cardsAreEqual) {
+                    setTimeout(() => {
+                        selectedCard.shown = false;
+                        $('#card-' + previousCardIndex).attr('src', IMG_REVERSO);
+                        card.shown = false;
+                        $('#' + cardId).attr('src', IMG_REVERSO);
+                    }, 500);
+                }
             }
         }
 
