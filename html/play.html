@@ -1,2 +1,20 @@
-<div id="table-top" class="container text-center"></container>
+<div id="table-top" class="container text-center"></div>
+
+<div class="modal fade" id="game-over-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header ">
+                <h5 class="modal-title">Juego finalizado</h5>
+            </div>
+            <div class="modal-body">
+                <p id="game-over-message" class="text-center"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-miw-secondary" onclick="exitGame()">Salir</button>
+                <button type="button" class="btn btn-miw-primary" onclick="restartGame()">Reiniciar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>startGame();</script>

@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-miw sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark miw sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href=""><img src="assets/LogoUPM.png" width="40em"> Juego de las Parejas</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -67,7 +67,6 @@
     <script type="text/javascript" src="scripts/preferences.js"></script>
     <script type="text/javascript" src="scripts/play.js"></script>
     <script>
-        const IMG_REVERSO = 'assets/naipes/reverso.jpg';
 
         function selectCard(cardId) {
             const index = parseInt(cardId.split('-')[1]);
@@ -100,6 +99,21 @@
             }
         }
 
+        function finishGame() {
+            $('#game-over-modal').modal('show');
+            $('#game-over-message').html(`El juego ha terminado con una puntuación de ${score}`);
+            // saveRecord()
+        }
+
+        function restartGame() {
+            $('#game-over-modal').modal('hide');
+            startGame();
+        }
+
+        function exitGame() {
+            $('#game-over-modal').modal('hide');
+            $('#router-outlet').load('./html/home.html')
+        }
     </script>
 </body>
 
