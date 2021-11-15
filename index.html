@@ -75,7 +75,6 @@
             }
             const index = parseInt(cardId.split('-')[1]);
             const card = cardsGenerated[index];
-
             if (card.shown) {
                 console.info('Carta ya seleccionada');
                 return;
@@ -108,6 +107,7 @@
         }
 
         function finishGame() {
+            clearInterval(interval);
             $('#game-over-modal').modal('show');
             $('#game-over-message').html(`El juego ha terminado con una puntuación de ${score}`);
             // saveRecord()

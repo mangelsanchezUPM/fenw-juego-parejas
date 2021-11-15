@@ -53,18 +53,25 @@ class Card {
 
 const IMG_REVERSO = "assets/naipes/reverso.jpg";
 
-var cardsNumber, timeLimit, cardsGenerated, selectedCard, score, waitTurn;
+var cardsNumber,
+  timeLimit,
+  cardsGenerated,
+  selectedCard,
+  score,
+  waitTurn,
+  interval;
 
 function startGame() {
   $("#table-top").html("");
+  clearInterval(interval);
   cardsNumber = localStorage.getItem("cards-number");
-  timeLimit = localStorage.getItem("time-limit");
+  timeLimit = parseInt(localStorage.getItem("time-limit"));
   selectedCardIndex = undefined;
   score = 0;
-  $('#score-info').html(score);
   waitTurn = false;
   cardsGenerated = generateCards();
   printTableTop();
+  playingGame = false;
 }
 
 function generateCards() {
@@ -83,8 +90,23 @@ function printTableTop() {
                  onclick="selectCard(this.id)" >
              `);
   }
+  $("#score-info").html(score);
+  if (timeLimit == 0) {
+    $("#time-limit-info").html("No");
+  } else {
+    $("#time-limit-info").html(timeLimit);
+    interval = setInterval(() => {
+      timeLimit -= 1;
+      $("#time-limit-info").html(timeLimit);
+      if (timeLimit == 0) {
+        finishGame();
+        clearInterval(interval);
+      }
+    }, 1000);
+  }
 }
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
