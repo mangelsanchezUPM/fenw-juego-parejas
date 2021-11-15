@@ -87,17 +87,15 @@ form.form-preferences {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
 .container.game-info {
     color: var(--text);
     font-weight: bold;
     margin-top: 20px;
+    padding: 10px;
 }
 label.game-info-label {
     font-size: 2vh;
 }
-
-
 #table-top img.img-fluid {
     padding-top: 5px;
     max-width: 120px;
@@ -112,4 +110,27 @@ label.game-info-label {
 #table-top img.img-fluid:hover {
     transform: scale(1.2);
     cursor: pointer;
+}
+
+/* Records specific styles */
+
+div.box.records.container {
+    width: 50%;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+div.box.records .body {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+form.form-records {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.records .btn.btn-miw-secondary {
+    margin-top: 20px;
+    width: 100%;
 }

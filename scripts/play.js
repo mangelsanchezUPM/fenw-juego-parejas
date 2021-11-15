@@ -58,6 +58,7 @@ var cardsNumber,
   cardsGenerated,
   selectedCardIndex,
   score,
+  totalScore,
   waitTurn,
   interval;
 
@@ -68,6 +69,7 @@ function startGame() {
   timeLimit = parseInt(localStorage.getItem("time-limit"));
   selectedCardIndex = undefined;
   score = 0;
+  totalScore = getExtraScore();
   waitTurn = false;
   cardsGenerated = generateCards();
   printTableTop();
@@ -91,6 +93,8 @@ function printTableTop() {
              `);
   }
   $("#score-info").html(score);
+  $("#total-score-info").html(totalScore);
+
   if (timeLimit == 0) {
     $("#time-limit-info").html("No");
   } else {
@@ -130,6 +134,8 @@ function selectCard(cardId) {
     const cardsAreEqual = card.value == selectedCard.value;
     score += cardsAreEqual ? 15 : -5;
     $("#score-info").html(score);
+    totalScore += score;
+    $("#total-score-info").html(totalScore);
     let previousCardIndex = selectedCardIndex;
     selectedCardIndex = undefined;
     $("#" + cardId).attr("src", card.image);
@@ -151,7 +157,7 @@ function finishGame() {
   clearInterval(interval);
   $("#game-over-modal").modal("show");
   $("#game-over-message").html(
-    `El juego ha terminado con una puntuación de ${score}`
+    `El juego ha terminado con una puntuación de ${totalScore}.`
   );
   // saveRecord()
 }
@@ -168,4 +174,37 @@ function exitGame() {
 
 function isGameOver() {
   return cardsGenerated.every((card) => card.shown == true);
+}
+
+function getExtraScore() {
+  debugger;
+  let extraPoints = 0;
+  switch (parseInt(cardsNumber)) {
+    case 26:
+      extraPoints += 25;
+      break;
+    case 32:
+      extraPoints += 50;
+      break;
+    default:
+      extraPoints += 0;
+      break;
+  }
+  switch (parseInt(timeLimit)) {
+    case 60:
+      extraPoints += 100;
+      break;
+    case 90:
+      extraPoints += 75;
+      break;
+    case 120:
+      extraPoints += 50;
+      break;
+    case 150:
+      extraPoints += 25;
+      break;
+    default:
+      extraPoints += 0;
+  }
+  return extraPoints;
 }
