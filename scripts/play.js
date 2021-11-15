@@ -53,7 +53,7 @@ class Card {
 
 const IMG_REVERSO = "assets/naipes/reverso.jpg";
 
-var cardsNumber, timeLimit, cardsGenerated, selectedCard, score;
+var cardsNumber, timeLimit, cardsGenerated, selectedCard, score, waitTurn;
 
 function startGame() {
   $("#table-top").html("");
@@ -61,6 +61,8 @@ function startGame() {
   timeLimit = localStorage.getItem("time-limit");
   selectedCardIndex = undefined;
   score = 0;
+  $('#score-info').html(score);
+  waitTurn = false;
   cardsGenerated = generateCards();
   printTableTop();
 }
