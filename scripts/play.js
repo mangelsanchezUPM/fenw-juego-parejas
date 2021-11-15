@@ -56,7 +56,7 @@ const IMG_REVERSO = "assets/naipes/reverso.jpg";
 var cardsNumber,
   timeLimit,
   cardsGenerated,
-  selectedCard,
+  selectedCardIndex,
   score,
   waitTurn,
   interval;
@@ -110,3 +110,62 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function selectCard(cardId) {
+  if (waitTurn) {
+    console.info("Espere a que todas las cartas estén boca abajo");
+    return;
+  }
+  const index = parseInt(cardId.split("-")[1]);
+  const card = cardsGenerated[index];
+  if (card.shown) {
+    console.info("Carta ya seleccionada");
+    return;
+  }
+  card.shown = true;
+  $("#" + cardId).attr("src", card.image);
+  if (selectedCardIndex === undefined) {
+    selectedCardIndex = index;
+  } else {
+    const selectedCard = cardsGenerated[selectedCardIndex];
+    const cardsAreEqual = card.value == selectedCard.value;
+    score += cardsAreEqual ? 15 : -5;
+    $("#score-info").html(score);
+    let previousCardIndex = selectedCardIndex;
+    selectedCardIndex = undefined;
+    $("#" + cardId).attr("src", card.image);
+    if (!cardsAreEqual) {
+      waitTurn = true;
+      selectedCard.shown = false;
+      card.shown = false;
+      setTimeout(() => {
+        $("#card-" + previousCardIndex).attr("src", IMG_REVERSO);
+        $("#" + cardId).attr("src", IMG_REVERSO);
+        waitTurn = false;
+      }, 500);
+    }
+  }
+  if (isGameOver()) finishGame();
+}
+
+function finishGame() {
+  clearInterval(interval);
+  $("#game-over-modal").modal("show");
+  $("#game-over-message").html(
+    `El juego ha terminado con una puntuación de ${score}`
+  );
+  // saveRecord()
+}
+
+function restartGame() {
+  $("#game-over-modal").modal("hide");
+  startGame();
+}
+
+function exitGame() {
+  $("#game-over-modal").modal("hide");
+  $("#router-outlet").load("./html/home.html");
+}
+
+function isGameOver() {
+  return cardsGenerated.every((card) => card.shown == true);
+}
