@@ -177,7 +177,6 @@ function isGameOver() {
 }
 
 function getExtraScore() {
-  debugger;
   let extraPoints = 0;
   switch (parseInt(cardsNumber)) {
     case 26:
