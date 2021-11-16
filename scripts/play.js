@@ -130,11 +130,12 @@ function selectCard(cardId) {
   if (selectedCardIndex === undefined) {
     selectedCardIndex = index;
   } else {
+    debugger;
     const selectedCard = cardsGenerated[selectedCardIndex];
     const cardsAreEqual = card.value == selectedCard.value;
     score += cardsAreEqual ? 15 : -5;
     $("#score-info").html(score);
-    totalScore += score;
+    totalScore = score + getExtraScore();
     $("#total-score-info").html(totalScore);
     let previousCardIndex = selectedCardIndex;
     selectedCardIndex = undefined;
@@ -178,6 +179,8 @@ function isGameOver() {
 
 function getExtraScore() {
   let extraPoints = 0;
+  const cardsNumber = parseInt(localStorage.getItem("cards-number"));
+  const timeLimit = parseInt(localStorage.getItem("time-limit"));
   switch (parseInt(cardsNumber)) {
     case 26:
       extraPoints += 25;
