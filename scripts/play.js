@@ -79,7 +79,7 @@ function startGame() {
 function generateCards() {
   let cardValues = [];
   for (let i = 0; i < cardsNumber / 2; i++) {
-    let rndValue = getRndInteger(1, 8);
+    let rndValue = Math.floor(Math.random() * (8 - 1)) + 1;
     cardValues.push(rndValue, rndValue);
   }
   return cardValues.map((v) => new Card(v)).sort(() => Math.random() - 0.5);
@@ -108,10 +108,6 @@ function printTableTop() {
       }
     }, 1000);
   }
-}
-
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function selectCard(cardId) {

@@ -12,5 +12,5 @@ $().ready(() => {
     $("#router-outlet").load("html/preferences.html")
   );
   $("#login").click(() => $("#router-outlet").load("html/login.html"));
-  $("#register").click(() => $("#router-outlet").load("html/registro.html"));
+  $("#register").click(() => $("#router-outlet").load("html/signup.html"));
 });
