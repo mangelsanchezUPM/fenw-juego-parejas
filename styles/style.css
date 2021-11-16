@@ -11,6 +11,11 @@
     background-color: var(--primary);
 }
 
+.footer {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
 .btn.btn-miw-primary {
     background-color: var(--primary);
     color: var(--text);
@@ -29,9 +34,44 @@
     background-color: var(--secondary-darkened);
 }
 
+/* Home specific style */
+
+.home-content {
+    background-color: rgb(192, 219, 245);
+    margin-right: 20px;margin-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 2px inset var(--secondary);
+}
+
+.home-content .h3 {
+    color: white
+}
+
+
+.home-cards {
+    max-width: 300px;
+}
+
+.home-cards.lateral-l {
+    max-width: 200px;
+    padding-left: 10px;
+}
+
+.home-cards.lateral-r {
+    max-width: 200px;
+    padding-right: 10px;
+}
+
+@media (max-width: 600px) {
+    .home-cards.lateral-l, .home-cards.lateral-r {
+        display: none;
+    }  
+}
+
 div.box.container {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     border-style: outset;
     border-color: var(--secondary);
     border-width: 2px;
