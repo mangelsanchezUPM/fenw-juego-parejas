@@ -63,6 +63,10 @@ var cardsNumber,
   interval;
 
 function startGame() {
+  $("#game-over-modal").modal({
+    backdrop: "static",
+    keyboard: false,
+  });
   $("#table-top").html("");
   clearInterval(interval);
   cardsNumber = localStorage.getItem("cards-number");
@@ -152,6 +156,7 @@ function selectCard(cardId) {
 
 function finishGame() {
   clearInterval(interval);
+
   $("#game-over-modal").modal("show");
   $("#game-over-message").html(
     `El juego ha terminado con una puntuación de ${totalScore}.`

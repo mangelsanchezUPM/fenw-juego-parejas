@@ -3,7 +3,7 @@ function savePreferences() {
   localStorage.setItem("cards-number", cardsNumber);
   let timeLimit = parseInt($("#time-limit").val());
   localStorage.setItem("time-limit", timeLimit);
-  $("#router-outlet").load("html/play.html");
+  $("#router-outlet").load("../html/play.html");
 }
 
 function updatePreferencesView() {
